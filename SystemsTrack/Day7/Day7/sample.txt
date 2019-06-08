@@ -1,0 +1,15 @@
+Perraju Bendapudi, or Peri as he is fondly addressed, is a technocrat currently working as the Vice President of Engineering at Adobe. Prior to this, he worked with the Microsoft India Development Center for 13 years in various capacities and also with Kony Labs, as its Senior Vice President for Cloud and Applications.
+
+Perraju started his line of work at Microsoft as a Senior Developer and subsequently became the Lead Developer of Service for Unix and the Development Manager for Windows group at MSIDC. As the Principle Architect, he worked on the Verification Platform and the Binary Based Static Driver Verifier. As Partner and Development Director, Perraju worked on Server and High Scale Service of Live mesh, and the Azure Caching and Integration Services.
+
+In 2013, he moved to Kony Labs as it’s Senior Vice President for Cloud and Applications. At Kony, Perraju owned the development of all the cloud assets, the cloud foundation, the mobile backend as service and the run-time applications teams. He is credited with building a great team that owned the foundation to ship products via both servers on-premise and the cloud. Eventually, he owned all engineering and architecture for all the products of Kony including it’s Client Runtimes, Tooling, Mobile Fabric runtimes and App services.
+
+Along with these Perraju owns 80+ patents and his areas of expertise are Compilers, Big Data and Machine Learning. He also enjoys teaching the fundamentals of Computer Science.
+
+___________________________________________________________________________________________________________________________________________
+
+Kalyan Chakravarthy, popularly called KC, has more than a decade of cutting edge experience building back-end frameworks and run-times for large scale services and products at companies like Microsoft and Trilogy. KC, who has a bachelor’s degree in Computer Science from IIT Madras, is also one of the two certified ‘Emotrance’ practitioners in India.
+
+KC is also passionate about a range of non-technology topics that span, belief and stress elimination techniques, to teaching and learning models that enhance the experience of students and trainers. As a faculty member KC puts his diverse interests to good use and is particularly responsible for designing effective learning environments for Mission R&D’s online and classroom courses.
+
+___________________________________________________________________________________________________________________________________________

@@ -1,0 +1,16 @@
+﻿Build started 02-06-2019 15:03:58.
+     1>Project "C:\Users\vishw\Documents\Visual Studio 2013\Projects\Day9\Day9\Day9.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _CRT_SECURE_NO_WARNINGS /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Parsing.cpp
+         Parsing.cpp
+     1>c:\users\vishw\documents\visual studio 2013\projects\day9\day9\parsing.cpp(64): warning C4101: 'registers' : unreferenced local variable
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\vishw\Documents\Visual Studio 2013\Projects\Day9\Debug\Day9.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\vishw\Documents\Visual Studio 2013\Projects\Day9\Debug\Day9.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\vishw\Documents\Visual Studio 2013\Projects\Day9\Debug\Day9.lib" /MACHINE:X86 Debug\Main.obj
+         Debug\Parsing.obj
+         Debug\StackUtils.obj
+         Day9.vcxproj -> C:\Users\vishw\Documents\Visual Studio 2013\Projects\Day9\Debug\Day9.exe
+     1>Done Building Project "C:\Users\vishw\Documents\Visual Studio 2013\Projects\Day9\Day9\Day9.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.35
