@@ -1,4 +1,4 @@
-"""classproject URL Configuration
+"""homeproject URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.2/topics/http/urls/
@@ -16,11 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.conf import settings
 from django.urls import include, path
-from django.conf.urls import url
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url('^onlineapp/', include('onlineapp.urls')),
 ]
 
 if settings.DEBUG:
@@ -33,3 +31,4 @@ if settings.DEBUG:
 
     ] + urlpatterns
     SHOW_TOOLBAR_CALLBACK = True
+
