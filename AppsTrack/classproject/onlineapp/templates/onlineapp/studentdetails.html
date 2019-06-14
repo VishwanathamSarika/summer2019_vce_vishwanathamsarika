@@ -1,23 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ college.acronym }} Students</title>
-</head>
-<body>
-<table border="1px" cellspacing="2px" cellpadding="5px">
-    <tr>
+{% extends 'base.html' %}
+
+{% block title %}
+{{ college.acronym | upper }} Students
+{% endblock %}
+
+{% block content %}
+<div class="limiter">
+			<h1 class="wrap-table100" align="center">Students</h1>
+    {% if 'Can add student' in user_permissions %}
+            <div class="wrap-table100"><button type="button" class="btn btn-info"
+											   style="background:#36304a; border-color:#36304a;"
+												onclick="window.location='{% url 'add_student' clg_id=college.id %}'">+ Add Student</button></div>
+    {% endif %}
+
+			<div class="wrap-table100">
+				<br>
+				<div class="table100">
+					<table>
+						<thead>
+    <tr class="table100-head">
         <th>Id</th>
         <th>Name</th>
         <th>Total</th>
+        {% if 'Can change student' and 'Can delete student' in user_permissions %}
+        <th>Actions</th>
+        {% endif %}
     </tr>
+    </thead>
+                        <tbody>
     {% for i in students_list %}
     <tr>
-        <td>{{ i.id }}</td>
-        <td>{{ i.name }}</td>
-        <td>{{ i.mocktest1__total }}</td>
+        <td class="column1">{{ i.id }}</td>
+        <td class="column2">{{ i.name }}</td>
+        <td class="column3">{{ i.mocktest1.total }}</td>
+        {% if 'Can change student' and 'Can delete student' in user_permissions %}
+        <td class="column3">
+			<span onclick="window.location='{% url 'edit_student' clg_id=college.id id=i.id %}'" style="display:inline-block">Edit</span>
+			<span style="display:inline-block"> | </span>
+			<form id="delete_form_{{ i.id }}" class="delete-btn" method="post" action="{% url 'delete_student' clg_id=college.id id=i.id %}"
+			style="display:inline-block">
+				{% csrf_token %}
+			<a onclick="document.getElementById('delete_form_{{ i.id }}').submit();">Delete</a>
+		</form>
+		</td>{% endif %}
     </tr>
     {% endfor %}
-</table>
-</body>
-</html>
+</tbody>
+					</table>
+				</div>
+			</div>
+	</div>
+{% endblock %}

@@ -20,7 +20,6 @@ from django.conf.urls import url
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url('^onlineapp/', include('onlineapp.urls')),
 ]
 
 if settings.DEBUG:
@@ -30,6 +29,10 @@ if settings.DEBUG:
 
         # For django versions before 2.0:
         # url(r'^__debug__/', include(debug_toolbar.urls)),
+
+
+        url(r'', include('onlineapp.urls')),
+        url(r'^api-auth/', include('rest_framework.urls'))
 
     ] + urlpatterns
     SHOW_TOOLBAR_CALLBACK = True

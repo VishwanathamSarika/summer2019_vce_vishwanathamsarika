@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Login Form{% endblock %}
+
+{% block content %}
+<h1 align="center">Login Here</h1>
+ <div class="container">
+     <br>
+<form role="form"
+      method="post">
+    {% csrf_token %}
+    {{ form | crispy }}
+    <button type="submit" class="btn btn-primary" style="margin:30px">Submit</button>
+    <div>Not a member? <span style="color:blue" onclick="location='{% url 'signup_form' %}'">SignUp Here</span></div>
+</form>
+
+     <br>
+{% if messages %}
+     <ul class="messages">
+     <div class="alert alert-danger" role="alert">
+  <h4 class="alert-heading">Errors</h4>
+         {% for message in messages %}
+         <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+         {% endfor %}
+         </div>
+     </ul>
+     {% endif %}
+    </div>
+{% endblock %}

@@ -1,15 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>All Colleges</title>
-</head>
-<body>
-    <table border=1 cellspacing=2 cellpadding=5><tr><th>Name</th><th>Acronym</th></tr>
+{% extends 'base.html' %}
+
+{% block title %}All Colleges{% endblock %}
+
+{% block content %}
+<div class="limiter">
+			<h1 class="wrap-table100" align="center">Colleges</h1>
+
+			{% if 'Can add college' in user_permissions %}
+			<div class="wrap-table100"><button type="button" class="btn btn-info"
+											   style="background:#36304a; border-color:#36304a;"
+												onclick="window.location='{% url 'add_college' %}'">+ Add College</button></div>
+			{% endif %}
+			<div class="wrap-table100">
+				<br>
+				<div class="table100">
+					<table>
+						<thead>
+                        <tr class="table100-head"><th>Name</th>
+							<th>Acronym</th>
+							{% if 'Can change college' and 'Can delete college' in user_permissions %}
+						<th>Actions</th></tr>
+						{% endif %}
+                        </thead>
+                        <tbody>
     {% for i in colleges_list %}
-        <tr onclick="window.location='{%  url 'student_details' id=i.2 %}'">
-            <td>{{ i.0 }}</td><td><a href="{% url 'student_details' id=i.2 %}">{{ i.1 }}</a></td></tr>
+        <!--<tr onclick="window.location='{%  url 'student_details' id=i.2 %}'">-->
+	<tr>
+            <td class="column1">{{ i.0 }}</td>
+
+            <td class="column2"><a href="{% url 'student_details' id=i.2 %}">{{ i.1 }}</a></td>
+{% if 'Can change college' and 'Can delete college' in user_permissions %}
+		<td class="column3">
+			<span onclick="window.location='{% url 'edit_college' id=i.2 %}'" style="display:inline-block">Edit</span>
+			<span style="display:inline-block"> | </span>
+			<form id="delete_form_{{ i.2 }}" class="delete-btn" method="post" action="{% url 'delete_college' i.2 %}"
+			style="display:inline-block">
+				{% csrf_token %}
+			<a onclick="document.getElementById('delete_form_{{ i.2 }}').submit();">Delete</a>
+		</form>
+		</td>
+	{% endif %}
+	</tr>
         {% endfor %}
-    </table>
-</body>
-</html>
+    </tbody>
+					</table>
+				</div>
+			</div>
+	</div>
+{% endblock %}
