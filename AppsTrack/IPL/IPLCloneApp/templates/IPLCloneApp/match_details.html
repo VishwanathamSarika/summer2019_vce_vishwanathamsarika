@@ -1,0 +1,224 @@
+{% extends 'base.html' %}
+
+{% block title %}Match Details{% endblock %}
+
+{% block style %}
+
+#tab_container .container_item {
+  display: none;
+}
+#tab_container .container_item.is-active {
+  display: block;
+}
+
+.post {
+  position: relative;
+  padding: 20px;
+  flex-basis: auto;
+}
+
+.post__category {
+  font-size: .8rem;
+  text-transform: uppercase;
+}
+
+.post__title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin: 20px 0 10px;
+}
+
+.post__content {
+  font-size: 1.3rem;
+  margin-bottom: 50px;
+}
+
+.post__category,
+.post__permalink {
+  color: #4a4a4a;
+  text-decoration: underline;
+}
+
+.post__permalink {
+  position: absolute;
+  bottom: 20px;
+}
+
+.fb-auto {
+  flex-basis: auto;
+}
+
+.green {
+  background: #00ebc7;
+}
+.card-container {
+  cursor: pointer;
+  height: 150px;
+  perspective: 600;
+  position: relative;
+  width: 150px;
+}
+.card {
+  height: 100%;
+  position: absolute;
+  transform-style: preserve-3d;
+  transition: all 1s ease-in-out;
+  width: 100%;
+}
+.card:hover {
+  transform: rotateY(180deg);
+}
+.card .side {
+  backface-visibility: hidden;
+  border-radius: 6px;
+  height: 100%;
+  position: absolute;
+  overflow: hidden;
+  width: 100%;
+}
+.card .back {
+  background: #eaeaed;
+  color: #0087cc;
+  line-height: 150px;
+  text-align: center;
+  transform: rotateY(180deg);
+}
+{% endblock %}
+
+{% block content %}
+<br>
+<h3 class="title is-3" align="center">{{ match.0 }} Vs {{ match.1 }}</h3>
+<br>
+<div class="box">
+<nav class="level is-mobile">
+  <div class="level-item has-text-centered">
+    <div>
+      <p class="heading">Toss Winner</p>
+      <p class="title is-5">{{ match.2 }}</p>
+    </div>
+  </div>
+  <div class="level-item has-text-centered">
+    <div>
+      <p class="heading">Toss Decision</p>
+      <p class="title is-5">{{ match.3 }}</p>
+    </div>
+  </div>
+  <div class="level-item has-text-centered">
+    <div>
+      <p class="heading is-4">Winner</p>
+      <p class="title is-3">{{ match.4 }}</p>
+    </div>
+  </div>
+  <div class="level-item has-text-centered">
+    <div>
+      <p class="heading">Wins by run</p>
+      <p class="title is-5">{{ match.5 }}</p>
+    </div>
+  </div>
+    <div class="level-item has-text-centered">
+    <div>
+      <p class="heading">Player of the match</p>
+      <p class="title is-5">{{ match.6 }}</p>
+    </div>
+  </div>
+</nav>
+    </div>
+<br>
+
+<div class="tabs is-centered" id="tab_header" >
+  <ul>
+    <li class="item is-active" data-option="1"><a>Inning 1</a></li>
+    <li class="item" data-option="2"><a>Inning 2</a></li>
+  </ul>
+</div>
+
+<div  id="tab_container">
+  <div class="container_item is-active container" data-item="1" display="inline-block">
+
+   <table class="table is-hoverable is-bordered" width="75%" style="margin-right:35px;float:left">
+    <thead>
+    <tr>
+      <th>Over</th>
+      <th>Ball</th>
+      <th>Batsman</th>
+      <th>Non striker</th>
+      <th>Bowler</th>
+      <th>Total Runs</th>
+    </tr>
+  </thead>
+    <tbody>
+    {% for i in match_details1 %}
+    <tr>
+        <td>{{ i.0 }}</td>
+        <td>{{ i.1 }}</td>
+        <td>{{ i.2 }}</td>
+        <td>{{ i.3 }}</td>
+        <td>{{ i.4 }}</td>
+        <td>{{ i.5 }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+      <!--<article class="tile is-child green post" style="float:left;padding:20px;width:20%">-->
+          <!--<a class="post__category" href="">travel</a>-->
+          <!--<h2 class="post__title">Blog #3</h2>-->
+          <!--<div class="post__content">Cras aliquam sit amet turpis eget sodales. Praesent scelerisque aliquet rhoncus. Nunc rhoncus eros vehicula, sollicitudin ligula quis, ullamcorper nisl.</div>-->
+          <!--<a class="post__permalink" href="">Learn more</a>-->
+        <!--</article>-->
+
+      <div class="card-container" style="float:left;width:20%">
+  <div class="card">
+      <div class="side green" style="text-align: center;line-height: 150px;">Flip me</div>
+    <div class="side back">Jimmy Eat World</div>
+  </div>
+</div>
+</div>
+
+  <div class="container_item" data-item="2" display="inline-block">
+   <table class="table is-hoverable is-bordered" width="75%" style="margin-right:35px;float:left">
+    <thead>
+    <tr>
+      <th>Over</th>
+      <th>Ball</th>
+      <th>Batsman</th>
+      <th>Non striker</th>
+      <th>Bowler</th>
+      <th>Total Runs</th>
+    </tr>
+  </thead>
+    <tbody>
+    {% for i in match_details2 %}
+    <tr>
+        <td>{{ i.0 }}</td>
+        <td>{{ i.1 }}</td>
+        <td>{{ i.2 }}</td>
+        <td>{{ i.3 }}</td>
+        <td>{{ i.4 }}</td>
+        <td>{{ i.5 }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+      <!--<article class="tile is-child green post" style="float:left;padding:20px;width:20%">-->
+          <!--<a class="post__category" href="">travel</a>-->
+          <!--<h2 class="post__title">Blog #3</h2>-->
+          <!--<div class="post__content">Cras aliquam sit amet turpis eget sodales. Praesent scelerisque aliquet rhoncus. Nunc rhoncus eros vehicula, sollicitudin ligula quis, ullamcorper nisl.</div>-->
+          <!--<a class="post__permalink" href="">Learn more</a>-->
+        <!--</article>-->
+      
+  </div>
+
+</div>
+
+<script>$(document).ready(function() {
+  $('#tab_header ul li.item').on('click', function() {
+    var number = $(this).data('option');
+    $('#tab_header ul li.item').removeClass('is-active');
+    $(this).addClass('is-active');
+    $('#tab_container .container_item').removeClass('is-active');
+    $('div[data-item="' + number + '"]').addClass('is-active');
+  });
+});
+</script>
+
+{% endblock %}

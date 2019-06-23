@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block title %}Season Details{% endblock %}
+
+{% block content %}
+  <div class="dropdown">
+  <div class="dropdown-trigger">
+    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">
+      <span>Select season </span>
+       <span class="icon is-small">
+        <i class="fas fa-angle-down" aria-hidden="true"></i>
+      </span>
+    </button>
+  </div>
+  <div class="dropdown-menu" id="dropdown-menu3" role="menu">
+    <div class="dropdown-content">
+        {% for i in number_of_seasons %}
+      <a href="{% url 'get_season_details' season=i %}" class="dropdown-item">
+        Season {{ i }}
+      </a>
+        {% endfor %}
+    </div>
+  </div>
+</div>
+
+
+<table class="table is-hoverable" id="data">
+    <thead>
+    <tr>
+      <th>City</th>
+      <th>Team1</th>
+      <th>Team2</th>
+      <th>Toss Result</th>
+      <th>Toss Decision</th>
+      <th>Result</th>
+      <th>Player of the Match</th>
+        <th>Action</th>
+    </tr>
+  </thead>
+    <tbody>
+    {% for i in season_details %}
+    <tr>
+        <td>{{ i.0 }}</td>
+        <td>{{ i.1 }}</td>
+        <td>{{ i.2 }}</td>
+        <td>{{ i.3 }}</td>
+        <td>{{ i.4 }}</td>
+        <td>{{ i.5 }}</td>
+        <td>{{ i.6 }}</td>
+        <td>
+			<span class="button is-primary is-small"
+                  onclick="window.location='{% url 'get_match_details' match_id=i.7 %}'"
+                  style="display:inline-block">View Match Details</span>
+		</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<script>
+    $(document).ready(function(){
+    $('#data').after('<div id="nav"></div>');
+    var rowsShown = 8;
+    var rowsTotal = $('#data tbody tr').length;
+    var numPages = rowsTotal/rowsShown;
+    for(i = 0;i < numPages;i++) {
+        var pageNum = i + 1;
+        $('#nav').append('<a href="#" rel="'+i+'" class="pagination-link">'+pageNum+'</a> ');
+    }
+    $('#data tbody tr').hide();
+    $('#data tbody tr').slice(0, rowsShown).show();
+    $('#nav a:first').addClass('active');
+    $('#nav a').bind('click', function(){
+        $('#nav a').removeClass('active');
+        $(this).addClass('active');
+        var currPage = $(this).attr('rel');
+        var startItem = currPage * rowsShown;
+        var endItem = startItem + rowsShown;
+        $('#data tbody tr').css('opacity','0.0').hide().slice(startItem, endItem).
+        css('display','table-row').animate({opacity:1}, 300);
+    });
+});
+</script>
+{% endblock %}
